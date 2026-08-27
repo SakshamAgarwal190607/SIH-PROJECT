@@ -1,0 +1,450 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f5f7fb;
+    color: #172033;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.topbar {
+    height: 70px;
+
+    background: white;
+
+    border-bottom: 1px solid #e5e9f0;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 7%;
+}
+
+
+.brand {
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    font-size: 18px;
+    font-weight: 700;
+}
+
+
+.brand-icon {
+    width: 36px;
+    height: 36px;
+
+    border-radius: 9px;
+
+    background: #0b2d5c;
+
+    color: white;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-weight: 800;
+}
+
+
+.step {
+    color: #7a8498;
+
+    font-size: 13px;
+
+    font-weight: 600;
+}
+
+
+/* =========================
+   MAIN CONTAINER
+========================= */
+
+.container {
+    width: 90%;
+    max-width: 900px;
+
+    margin: auto;
+
+    padding: 55px 0 80px;
+}
+
+
+/* =========================
+   HEADING
+========================= */
+
+.heading {
+    text-align: center;
+
+    max-width: 680px;
+
+    margin: auto;
+}
+
+
+.eyebrow {
+    color: #1464c4;
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    letter-spacing: 1.5px;
+}
+
+
+.heading h1 {
+    margin-top: 12px;
+
+    font-size: 36px;
+
+    line-height: 1.2;
+}
+
+
+.heading p {
+    margin-top: 12px;
+
+    color: #7a8498;
+
+    font-size: 14px;
+
+    line-height: 1.6;
+}
+
+
+/* =========================
+   PROGRESS
+========================= */
+
+.progress-container {
+    margin: 40px 0;
+}
+
+
+.progress-info {
+    display: flex;
+
+    justify-content: space-between;
+
+    margin-bottom: 9px;
+
+    color: #6e788b;
+
+    font-size: 12px;
+
+    font-weight: 600;
+}
+
+
+.progress-bar {
+    height: 7px;
+
+    width: 100%;
+
+    background: #e5eaf2;
+
+    border-radius: 20px;
+
+    overflow: hidden;
+}
+
+
+#progressFill {
+    width: 0%;
+
+    height: 100%;
+
+    background: #1464c4;
+
+    transition: width 0.3s ease;
+}
+
+
+/* =========================
+   SECTION
+========================= */
+
+.section {
+    margin-bottom: 45px;
+}
+
+
+.section-title {
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 15px;
+
+    margin-bottom: 20px;
+}
+
+
+.section-number {
+    width: 38px;
+    height: 38px;
+
+    min-width: 38px;
+
+    border-radius: 9px;
+
+    background: #e8f1fc;
+
+    color: #1464c4;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    font-size: 12px;
+
+    font-weight: 800;
+}
+
+
+.section-title h2 {
+    font-size: 20px;
+
+    margin-bottom: 5px;
+}
+
+
+.section-title p {
+    color: #7a8498;
+
+    font-size: 12px;
+}
+
+
+/* =========================
+   QUESTION CARD
+========================= */
+
+.question {
+    background: white;
+
+    border: 1px solid #e3e8f0;
+
+    border-radius: 12px;
+
+    padding: 25px;
+
+    margin-bottom: 15px;
+
+    box-shadow: 0 2px 8px rgba(20, 40, 80, 0.03);
+}
+
+
+.question h3 {
+    font-size: 14px;
+
+    line-height: 1.5;
+
+    margin-bottom: 20px;
+}
+
+
+/* =========================
+   OPTIONS
+========================= */
+
+.options {
+    display: grid;
+
+    grid-template-columns: repeat(5, 1fr);
+
+    gap: 10px;
+}
+
+
+.options label {
+    cursor: pointer;
+
+    border: 1px solid #dce2eb;
+
+    border-radius: 8px;
+
+    padding: 12px 8px;
+
+    text-align: center;
+
+    font-size: 12px;
+
+    color: #687386;
+
+    transition: 0.2s;
+}
+
+
+.options label:hover {
+    border-color: #1464c4;
+
+    color: #1464c4;
+}
+
+
+.options input {
+    display: none;
+}
+
+
+.options label:has(input:checked) {
+    border-color: #1464c4;
+
+    background: #edf5ff;
+
+    color: #1464c4;
+
+    font-weight: 700;
+}
+
+
+/* =========================
+   SELECT
+========================= */
+
+select {
+    width: 100%;
+
+    height: 48px;
+
+    padding: 0 14px;
+
+    border: 1px solid #dce2eb;
+
+    border-radius: 8px;
+
+    background: white;
+
+    color: #4f5b70;
+
+    font-size: 13px;
+
+    outline: none;
+}
+
+
+select:focus {
+    border-color: #1464c4;
+
+    box-shadow:
+        0 0 0 3px rgba(20, 100, 196, 0.08);
+}
+
+
+/* =========================
+   SUBMIT
+========================= */
+
+.submit-area {
+    text-align: center;
+
+    border-top: 1px solid #e3e8f0;
+
+    padding-top: 30px;
+}
+
+
+.submit-area p {
+    color: #7a8498;
+
+    font-size: 12px;
+
+    margin-bottom: 18px;
+}
+
+
+.submit-area button {
+    min-width: 270px;
+
+    height: 52px;
+
+    padding: 0 25px;
+
+    border: none;
+
+    border-radius: 9px;
+
+    background: #1464c4;
+
+    color: white;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 12px;
+
+    transition: 0.2s;
+}
+
+
+.submit-area button:hover {
+    background: #0d55aa;
+
+    transform: translateY(-1px);
+}
+
+
+.submit-area button:disabled {
+    opacity: 0.7;
+
+    cursor: not-allowed;
+
+    transform: none;
+}
+
+
+.arrow {
+    font-size: 18px;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 700px) {
+
+    .topbar {
+        padding: 0 20px;
+    }
+
+    .container {
+        width: 92%;
+
+        padding-top: 35px;
+    }
+
+    .heading h1 {
+        font-size: 28px;
+    }
+
+    .options {
+        grid-template-columns: 1fr;
+    }
+
+}

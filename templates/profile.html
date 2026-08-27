@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Profile | Karmayogi AI</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/profile.css') }}">
+</head>
+
+<body>
+
+    <div class="page-container">
+
+        <!-- LEFT SIDE -->
+        <section class="info-section">
+
+            <div class="brand">
+                <div class="brand-icon">K</div>
+                <span>Karmayogi AI</span>
+            </div>
+
+            <div class="hero-content">
+
+                <span class="badge">
+                    AI-Powered Learning Platform
+                </span>
+
+                <h1>
+                    Build your
+                    <span>personalized</span>
+                    learning journey.
+                </h1>
+
+                <p>
+                    Tell us about yourself so our AI can identify
+                    your competency gaps and recommend the right
+                    learning path for you.
+                </p>
+
+                <div class="feature">
+
+                    <div class="feature-icon">✦</div>
+
+                    <div>
+                        <h3>AI-Powered Skill Analysis</h3>
+                        <p>
+                            Get insights based on your role,
+                            experience and competencies.
+                        </p>
+                    </div>
+
+                </div>
+
+                <div class="feature">
+
+                    <div class="feature-icon">↗</div>
+
+                    <div>
+                        <h3>Personalized Recommendations</h3>
+                        <p>
+                            Receive learning recommendations
+                            tailored to your professional needs.
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- RIGHT SIDE -->
+        <section class="form-section">
+
+            <div class="form-container">
+
+                <div class="progress">
+
+                    <div class="progress-top">
+                        <span>PROFILE SETUP</span>
+                        <span>Step 1 of 3</span>
+                    </div>
+
+                    <div class="progress-bar">
+                        <div class="progress-fill"></div>
+                    </div>
+
+                </div>
+
+
+                <div class="heading">
+
+                    <span class="small-label">
+                        LET'S GET STARTED
+                    </span>
+
+                    <h2>Tell us about yourself</h2>
+
+                    <p>
+                        This information helps us personalize
+                        your learning experience.
+                    </p>
+
+                </div>
+
+
+                {% if error %}
+                <div class="error-message">
+                    {{ error }}
+                </div>
+                {% endif %}
+
+
+                <form method="POST"
+                      action="{{ url_for('profile.profile') }}"
+                      id="profileForm">
+
+
+                    <!-- NAME -->
+
+                    <div class="form-group">
+
+                        <label for="name">
+                            Full Name
+                            <span>*</span>
+                        </label>
+
+                        <input
+                            type="text"
+                            id="name"
+                            name="name"
+                            placeholder="Enter your full name"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- DEPARTMENT -->
+
+                    <div class="form-group">
+
+                        <label for="department">
+                            Department / Organization
+                            <span>*</span>
+                        </label>
+
+                        <select
+                            id="department"
+                            name="department"
+                            required
+                        >
+
+                            <option value="" disabled selected>
+                                Select your department
+                            </option>
+
+                            <option value="MoSPI">
+                                Ministry of Statistics & Programme Implementation
+                            </option>
+
+                            <option value="State Government">
+                                State Government
+                            </option>
+
+                            <option value="Central Government">
+                                Central Government
+                            </option>
+
+                            <option value="Other">
+                                Other
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- DESIGNATION -->
+
+                    <div class="form-group">
+
+                        <label for="designation">
+                            Designation / Role
+                            <span>*</span>
+                        </label>
+
+                        <input
+                            type="text"
+                            id="designation"
+                            name="designation"
+                            placeholder="e.g. Statistical Officer"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- EXPERIENCE + EDUCATION -->
+
+                    <div class="two-column">
+
+                        <div class="form-group">
+
+                            <label for="experience">
+                                Experience
+                            </label>
+
+                            <select
+                                id="experience"
+                                name="experience"
+                            >
+
+                                <option value="" selected>
+                                    Select experience
+                                </option>
+
+                                <option value="0-1">
+                                    0–1 Years
+                                </option>
+
+                                <option value="1-3">
+                                    1–3 Years
+                                </option>
+
+                                <option value="3-5">
+                                    3–5 Years
+                                </option>
+
+                                <option value="5-10">
+                                    5–10 Years
+                                </option>
+
+                                <option value="10+">
+                                    10+ Years
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="education">
+                                Highest Education
+                            </label>
+
+                            <select
+                                id="education"
+                                name="education"
+                            >
+
+                                <option value="" selected>
+                                    Select education
+                                </option>
+
+                                <option value="12th">
+                                    12th / Equivalent
+                                </option>
+
+                                <option value="Diploma">
+                                    Diploma
+                                </option>
+
+                                <option value="Bachelor's">
+                                    Bachelor's Degree
+                                </option>
+
+                                <option value="Master's">
+                                    Master's Degree
+                                </option>
+
+                                <option value="PhD">
+                                    PhD
+                                </option>
+
+                            </select>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- BUTTON -->
+
+                    <button
+                        type="submit"
+                        class="save-button"
+                        id="saveButton"
+                    >
+
+                        <span>Save & Continue</span>
+
+                        <span class="arrow">→</span>
+
+                    </button>
+
+
+                    <p class="privacy-note">
+                        🔒 Your information is securely used
+                        to personalize your learning experience.
+                    </p>
+
+                </form>
+
+            </div>
+
+        </section>
+
+    </div>
+
+
+    <script src="{{ url_for('static', filename='js/profile.js') }}"></script>
+
+</body>
+
+</html>

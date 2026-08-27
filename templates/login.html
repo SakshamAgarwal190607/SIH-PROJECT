@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Login | Karmayogi AI</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/login.css') }}">
+</head>
+
+<body>
+
+    <main class="login-page">
+
+        <!-- LEFT SECTION -->
+        <section class="login-info">
+
+            <!-- Brand -->
+            <div class="brand">
+                <div class="brand-icon">K</div>
+                <span>Karmayogi AI</span>
+            </div>
+
+
+            <!-- Hero Content -->
+            <div class="hero-content">
+
+                <div class="badge">
+                    AI-POWERED LEARNING PLATFORM
+                </div>
+
+                <h1>
+                    Empower your
+                    <span>professional growth.</span>
+                </h1>
+
+                <p>
+                    Discover your competency gaps, receive
+                    personalized learning recommendations and
+                    build a smarter learning journey.
+                </p>
+
+
+                <!-- Feature 1 -->
+                <div class="feature">
+
+                    <div class="feature-icon">✦</div>
+
+                    <div>
+                        <h3>AI Skill Analysis</h3>
+
+                        <p>
+                            Identify competency gaps using
+                            intelligent assessment.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <!-- Feature 2 -->
+                <div class="feature">
+
+                    <div class="feature-icon">↗</div>
+
+                    <div>
+                        <h3>Personalized Learning</h3>
+
+                        <p>
+                            Get learning paths tailored to
+                            your role and skills.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <!-- Feature 3 -->
+                <div class="feature">
+
+                    <div class="feature-icon">✓</div>
+
+                    <div>
+                        <h3>Track Your Progress</h3>
+
+                        <p>
+                            Monitor your learning and
+                            competency improvement.
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- RIGHT SECTION -->
+        <section class="login-form-section">
+
+            <div class="login-card">
+
+                <!-- Heading -->
+                <div class="form-heading">
+
+                    <span>WELCOME</span>
+
+                    <h2>Let's get started</h2>
+
+                    <p>
+                        Enter your details to continue to
+                        your personalized learning journey.
+                    </p>
+
+                </div>
+
+
+                <!-- Flask Error -->
+                {% if error %}
+
+                <div class="error-message">
+                    {{ error }}
+                </div>
+
+                {% endif %}
+
+
+                <!-- LOGIN FORM -->
+                <form
+                    id="loginForm"
+                    method="POST"
+                    action="{{ url_for('login.login') }}"
+                >
+
+                    <!-- NAME -->
+                    <div class="form-group">
+
+                        <label for="username">
+                            Full Name
+                            <span>*</span>
+                        </label>
+
+                        <input
+                            type="text"
+                            id="username"
+                            name="username"
+                            placeholder="Enter your full name"
+                            autocomplete="name"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- EMAIL -->
+                    <div class="form-group">
+
+                        <label for="email">
+                            Email Address
+                            <span>*</span>
+                        </label>
+
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            placeholder="you@example.com"
+                            autocomplete="email"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- BUTTON -->
+                    <button
+                        type="submit"
+                        class="continue-btn"
+                        id="continueBtn"
+                    >
+
+                        <span id="buttonText">
+                            Continue
+                        </span>
+
+                        <span class="arrow">
+                            →
+                        </span>
+
+                    </button>
+
+                </form>
+
+
+                <!-- SECURITY -->
+                <div class="security-note">
+
+                    <span>🔒</span>
+
+                    <p>
+                        Your information is securely handled
+                        and used only to personalize your experience.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <script src="{{ url_for('static', filename='js/login.js') }}">
+    </script>
+
+</body>
+
+</html>

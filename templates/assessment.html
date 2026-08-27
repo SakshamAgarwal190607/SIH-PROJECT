@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Assessment | Karmayogi AI</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/assessment.css') }}">
+</head>
+
+<body>
+
+    <!-- ================= HEADER ================= -->
+
+    <header class="topbar">
+
+        <div class="brand">
+            <div class="brand-icon">K</div>
+            <span>Karmayogi AI</span>
+        </div>
+
+        <div class="step">
+            Step 2 of 4
+        </div>
+
+    </header>
+
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="container">
+
+        <!-- Heading -->
+
+        <div class="heading">
+
+            <span class="eyebrow">
+                COMPETENCY ASSESSMENT
+            </span>
+
+            <h1>
+                Discover your competency level
+            </h1>
+
+            <p>
+                Answer the questions honestly to help us
+                understand your current skills and identify
+                areas for improvement.
+            </p>
+
+        </div>
+
+
+        <!-- Progress -->
+
+        <div class="progress-container">
+
+            <div class="progress-info">
+
+                <span>Assessment Progress</span>
+
+                <span id="progressText">0%</span>
+
+            </div>
+
+            <div class="progress-bar">
+
+                <div id="progressFill"></div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ================= FORM ================= -->
+
+        <form
+            id="assessmentForm"
+            method="POST"
+            action="{{ url_for('assessment.assessment') }}"
+        >
+
+
+            <!-- ========== SECTION 1 ========== -->
+
+            <section class="section">
+
+                <div class="section-title">
+
+                    <div class="section-number">
+                        01
+                    </div>
+
+                    <div>
+                        <h2>Statistical Knowledge</h2>
+
+                        <p>
+                            Evaluate your understanding of
+                            statistics and data collection.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <!-- Q1 -->
+
+                <div class="question">
+
+                    <h3>
+                        1. How would you rate your knowledge
+                        of basic statistics?
+                    </h3>
+
+                    <div class="options">
+
+                        <label>
+                            <input type="radio"
+                                   name="statistics"
+                                   value="1"
+                                   required>
+                            <span>Beginner</span>
+                        </label>
+
+                        <label>
+                            <input type="radio"
+                                   name="statistics"
+                                   value="2">
+                            <span>Basic</span>
+                        </label>
+
+                        <label>
+                            <input type="radio"
+                                   name="statistics"
+                                   value="3">
+                            <span>Intermediate</span>
+                        </label>
+
+                        <label>
+                            <input type="radio"
+                                   name="statistics"
+                                   value="4">
+                            <span>Advanced</span>
+                        </label>
+
+                        <label>
+                            <input type="radio"
+                                   name="statistics"
+                                   value="5">
+                            <span>Expert</span>
+                        </label>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Q2 -->
+
+                <div class="question">
+
+                    <h3>
+                        2. How confident are you in interpreting
+                        statistical reports?
+                    </h3>
+
+                    <div class="options">
+
+                        <label>
+                            <input type="radio"
+                                   name="interpretation"
+                                   value="1"
+                                   required>
+                            <span>Beginner</span>
+                        </label>
+
+                        <label>
+                            <input type="radio"
+                                   name="interpretation"
+                                   value="2">
+                            <span>Basic</span>
+                        </label>
+
+                        <label>
+                            <input type="radio"
+                                   name="interpretation"
+                                   value="3">
+                            <span>Intermediate</span>
+                        </label>
+
+                        <label>
+                            <input type="radio"
+                                   name="interpretation"
+                                   value="4">
+                            <span>Advanced</span>
+                        </label>
+
+                        <label>
+                            <input type="radio"
+                                   name="interpretation"
+                                   value="5">
+                            <span>Expert</span>
+                        </label>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Q3 -->
+
+                <div class="question">
+
+                    <h3>
+                        3. How comfortable are you with surveys,
+                        sampling and data collection?
+                    </h3>
+
+                    <div class="options">
+
+                        <label>
+                            <input type="radio"
+                                   name="survey"
+                                   value="1"
+                                   required>
+                            <span>Beginner</span>
+                        </label>
+
+                        <label>
+                            <input type="radio"
+                                   name="survey"
+                                   value="2">
+                            <span>Basic</span>
+                        </label>
+
+                        <label>
+                            <input type="radio"
+                                   name="survey"
+                                   value="3">
+                            <span>Intermediate</span>
+                        </label>
+
+                        <label>
+                            <input type="radio"
+                                   name="survey"
+                                   value="4">
+                            <span>Advanced</span>
+                        </label>
+
+                        <label>
+                            <input type="radio"
+                                   name="survey"
+                                   value="5">
+                            <span>Expert</span>
+                        </label>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ========== SECTION 2 ========== -->
+
+            <section class="section">
+
+                <div class="section-title">
+
+                    <div class="section-number">
+                        02
+                    </div>
+
+                    <div>
+
+                        <h2>Data & Technology</h2>
+
+                        <p>
+                            Assess your practical digital
+                            and technical skills.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Q4 -->
+
+                <div class="question">
+
+                    <h3>
+                        4. How confident are you in analysing datasets?
+                    </h3>
+
+                    <div class="options">
+
+                        <label>
+                            <input type="radio"
+                                   name="data_analysis"
+                                   value="1"
+                                   required>
+                            <span>Beginner</span>
+                        </label>
+
+                        <label>
+                            <input type="radio"
+                                   name="data_analysis"
+                                   value="2">
+                            <span>Basic</span>
+                        </label>
+
+                        <label>
+                            <input type="radio"
+                                   name="data_analysis"
+                                   value="3">
+                            <span>Intermediate</span>
+                        </label>
+
+                        <label>
+                            <input type="radio"
+                                   name="data_analysis"
+                                   value="4">
+                            <span>Advanced</span>
+                        </label>
+
+                        <label>
+                            <input type="radio"
+                                   name="data_analysis"
+                                   value="5">
+                            <span>Expert</span>
+                        </label>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Q5 -->
+
+                <div class="question">
+
+                    <h3>
+                        5. How comfortable are you with Excel
+                        or spreadsheets?
+                    </h3>
+
+                    <div class="options">
+
+                        <label>
+                            <input type="radio"
+                                   name="excel"
+                                   value="1"
+                                   required>
+                            <span>Beginner</span>
+                        </label>
+
+                        <label>
+                            <input type="radio"
+                                   name="excel"
+                                   value="2">
+                            <span>Basic</span>
+                        </label>
+
+                        <label>
+                            <input type="radio"
+                                   name="excel"
+                                   value="3">
+                            <span>Intermediate</span>
+                        </label>
+
+                        <label>
+                            <input type="radio"
+                                   name="excel"
+                                   value="4">
+                            <span>Advanced</span>
+                        </label>
+
+                        <label>
+                            <input type="radio"
+                                   name="excel"
+                                   value="5">
+                            <span>Expert</span>
+                        </label>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Q6 -->
+
+                <div class="question">
+
+                    <h3>
+                        6. How comfortable are you with Python
+                        or programming tools?
+                    </h3>
+
+                    <div class="options">
+
+                        <label>
+                            <input type="radio"
+                                   name="python"
+                                   value="1"
+                                   required>
+                            <span>Beginner</span>
+                        </label>
+
+                        <label>
+                            <input type="radio"
+                                   name="python"
+                                   value="2">
+                            <span>Basic</span>
+                        </label>
+
+                        <label>
+                            <input type="radio"
+                                   name="python"
+                                   value="3">
+                            <span>Intermediate</span>
+                        </label>
+
+                        <label>
+                            <input type="radio"
+                                   name="python"
+                                   value="4">
+                            <span>Advanced</span>
+                        </label>
+
+                        <label>
+                            <input type="radio"
+                                   name="python"
+                                   value="5">
+                            <span>Expert</span>
+                        </label>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ========== SECTION 3 ========== -->
+
+            <section class="section">
+
+                <div class="section-title">
+
+                    <div class="section-number">
+                        03
+                    </div>
+
+                    <div>
+
+                        <h2>Visualization & Advanced Skills</h2>
+
+                        <p>
+                            Evaluate your ability to work with
+                            modern data technologies.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Q7 -->
+
+                <div class="question">
+
+                    <h3>
+                        7. How confident are you in creating
+                        charts and dashboards?
+                    </h3>
+
+                    <div class="options">
+
+                        <label>
+                            <input type="radio"
+                                   name="visualization"
+                                   value="1"
+                                   required>
+                            <span>Beginner</span>
+                        </label>
+
+                        <label>
+                            <input type="radio"
+                                   name="visualization"
+                                   value="2">
+                            <span>Basic</span>
+                        </label>
+
+                        <label>
+                            <input type="radio"
+                                   name="visualization"
+                                   value="3">
+                            <span>Intermediate</span>
+                        </label>
+
+                        <label>
+                            <input type="radio"
+                                   name="visualization"
+                                   value="4">
+                            <span>Advanced</span>
+                        </label>
+
+                        <label>
+                            <input type="radio"
+                                   name="visualization"
+                                   value="5">
+                            <span>Expert</span>
+                        </label>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Q8 -->
+
+                <div class="question">
+
+                    <h3>
+                        8. How well can you communicate
+                        insights from data?
+                    </h3>
+
+                    <div class="options">
+
+                        <label>
+                            <input type="radio"
+                                   name="communication"
+                                   value="1"
+                                   required>
+                            <span>Beginner</span>
+                        </label>
+
+                        <label>
+                            <input type="radio"
+                                   name="communication"
+                                   value="2">
+                            <span>Basic</span>
+                        </label>
+
+                        <label>
+                            <input type="radio"
+                                   name="communication"
+                                   value="3">
+                            <span>Intermediate</span>
+                        </label>
+
+                        <label>
+                            <input type="radio"
+                                   name="communication"
+                                   value="4">
+                            <span>Advanced</span>
+                        </label>
+
+                        <label>
+                            <input type="radio"
+                                   name="communication"
+                                   value="5">
+                            <span>Expert</span>
+                        </label>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Q9 -->
+
+                <div class="question">
+
+                    <h3>
+                        9. How familiar are you with SQL
+                        and databases?
+                    </h3>
+
+                    <div class="options">
+
+                        <label>
+                            <input type="radio"
+                                   name="sql"
+                                   value="1"
+                                   required>
+                            <span>Beginner</span>
+                        </label>
+
+                        <label>
+                            <input type="radio"
+                                   name="sql"
+                                   value="2">
+                            <span>Basic</span>
+                        </label>
+
+                        <label>
+                            <input type="radio"
+                                   name="sql"
+                                   value="3">
+                            <span>Intermediate</span>
+                        </label>
+
+                        <label>
+                            <input type="radio"
+                                   name="sql"
+                                   value="4">
+                            <span>Advanced</span>
+                        </label>
+
+                        <label>
+                            <input type="radio"
+                                   name="sql"
+                                   value="5">
+                            <span>Expert</span>
+                        </label>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Q10 -->
+
+                <div class="question">
+
+                    <h3>
+                        10. How familiar are you with AI and
+                        Machine Learning concepts?
+                    </h3>
+
+                    <div class="options">
+
+                        <label>
+                            <input type="radio"
+                                   name="aiml"
+                                   value="1"
+                                   required>
+                            <span>Beginner</span>
+                        </label>
+
+                        <label>
+                            <input type="radio"
+                                   name="aiml"
+                                   value="2">
+                            <span>Basic</span>
+                        </label>
+
+                        <label>
+                            <input type="radio"
+                                   name="aiml"
+                                   value="3">
+                            <span>Intermediate</span>
+                        </label>
+
+                        <label>
+                            <input type="radio"
+                                   name="aiml"
+                                   value="4">
+                            <span>Advanced</span>
+                        </label>
+
+                        <label>
+                            <input type="radio"
+                                   name="aiml"
+                                   value="5">
+                            <span>Expert</span>
+                        </label>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ========== SECTION 4 ========== -->
+
+            <section class="section">
+
+                <div class="section-title">
+
+                    <div class="section-number">
+                        04
+                    </div>
+
+                    <div>
+
+                        <h2>Learning Preferences</h2>
+
+                        <p>
+                            Help us personalize your learning journey.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Q11 -->
+
+                <div class="question">
+
+                    <h3>
+                        11. What skill would you most like to improve?
+                    </h3>
+
+                    <select name="learning_goal" required>
+
+                        <option value="">
+                            Select an area
+                        </option>
+
+                        <option value="statistics">
+                            Statistics
+                        </option>
+
+                        <option value="data_analysis">
+                            Data Analysis
+                        </option>
+
+                        <option value="python">
+                            Python
+                        </option>
+
+                        <option value="sql">
+                            SQL
+                        </option>
+
+                        <option value="visualization">
+                            Data Visualization
+                        </option>
+
+                        <option value="aiml">
+                            AI / Machine Learning
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- Q12 -->
+
+                <div class="question">
+
+                    <h3>
+                        12. What is your preferred learning format?
+                    </h3>
+
+                    <div class="options learning-options">
+
+                        <label>
+                            <input type="radio"
+                                   name="learning_format"
+                                   value="video"
+                                   required>
+                            <span>Video Courses</span>
+                        </label>
+
+                        <label>
+                            <input type="radio"
+                                   name="learning_format"
+                                   value="reading">
+                            <span>Reading Material</span>
+                        </label>
+
+                        <label>
+                            <input type="radio"
+                                   name="learning_format"
+                                   value="projects">
+                            <span>Practical Projects</span>
+                        </label>
+
+                        <label>
+                            <input type="radio"
+                                   name="learning_format"
+                                   value="quiz">
+                            <span>Quizzes</span>
+                        </label>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ================= SUBMIT ================= -->
+
+            <div class="submit-area">
+
+                <p>
+                    Your answers will be analyzed to create
+                    your personalized competency profile.
+                </p>
+
+                <button type="submit" id="submitBtn">
+
+                    <span id="submitText">
+                        Analyze My Competencies
+                    </span>
+
+                    <span class="arrow">
+                        →
+                    </span>
+
+                </button>
+
+            </div>
+
+        </form>
+
+    </main>
+
+
+    <script src="{{ url_for('static', filename='js/assessment.js') }}">
+    </script>
+
+</body>
+
+</html>
