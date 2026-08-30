@@ -1,0 +1,44 @@
+[
+    {
+        "competency": "Python",
+        "title": "Python for Data Analysis",
+        "description": "Learn Python fundamentals for data analysis.",
+        "url": "https://www.igotkarmayogi.gov.in/"
+    },
+    {
+        "competency": "SQL",
+        "title": "SQL and Database Fundamentals",
+        "description": "Learn SQL queries, joins and data handling.",
+        "url": "https://www.igotkarmayogi.gov.in/"
+    },
+    {
+        "competency": "Statistics",
+        "title": "Statistics Fundamentals",
+        "description": "Learn statistics, probability and data interpretation.",
+        "url": "https://www.igotkarmayogi.gov.in/"
+    },
+    {
+        "competency": "Data Analysis",
+        "title": "Data Analysis Training",
+        "description": "Improve data cleaning and analytical skills.",
+        "url": "https://www.igotkarmayogi.gov.in/"
+    },
+    {
+        "competency": "Excel",
+        "title": "Excel for Data Analysis",
+        "description": "Learn formulas, pivot tables and data analysis.",
+        "url": "https://www.igotkarmayogi.gov.in/"
+    },
+    {
+        "competency": "Data Visualization",
+        "title": "Data Visualization",
+        "description": "Learn to create effective charts and dashboards.",
+        "url": "https://www.igotkarmayogi.gov.in/"
+    },
+    {
+        "competency": "AI & ML",
+        "title": "Artificial Intelligence and Machine Learning",
+        "description": "Learn the fundamentals of AI and machine learning.",
+        "url": "https://www.igotkarmayogi.gov.in/"
+    }
+]

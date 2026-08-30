@@ -1,0 +1,302 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Inter, Arial, sans-serif;
+    background: #f5f7fb;
+    color: #172033;
+}
+
+.copilot-page {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.copilot-header {
+    background: white;
+    border-bottom: 1px solid #e5e7eb;
+    padding: 24px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+.eyebrow {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: #667085;
+}
+
+.copilot-header h1 {
+    margin-top: 6px;
+    font-size: 30px;
+}
+
+.copilot-header p {
+    margin-top: 6px;
+    color: #667085;
+}
+
+.header-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.dashboard-btn,
+.clear-btn {
+    text-decoration: none;
+    padding: 10px 16px;
+    border-radius: 10px;
+    font-size: 14px;
+}
+
+.dashboard-btn {
+    background: #eef2ff;
+    color: #3730a3;
+}
+
+.clear-btn {
+    background: #fef2f2;
+    color: #b42318;
+}
+
+
+/* =========================================
+   CONTEXT
+========================================= */
+
+.context-card {
+    width: min(900px, 92%);
+    margin: 20px auto 0;
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 16px;
+    padding: 18px 22px;
+    display: flex;
+    gap: 50px;
+}
+
+.context-item {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.context-item span {
+    font-size: 12px;
+    color: #667085;
+}
+
+.context-item strong {
+    font-size: 15px;
+}
+
+
+/* =========================================
+   CHAT
+========================================= */
+
+.chat-container {
+    width: min(900px, 92%);
+    margin: 20px auto;
+    flex: 1;
+}
+
+.messages {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.message {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.user-message {
+    justify-content: flex-end;
+}
+
+.message-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #eef2ff;
+    flex-shrink: 0;
+}
+
+.user-avatar {
+    background: #172033;
+    color: white;
+    font-size: 13px;
+}
+
+.message-content {
+    max-width: 75%;
+    padding: 13px 16px;
+    border-radius: 15px;
+    line-height: 1.6;
+    font-size: 15px;
+}
+
+.assistant-message .message-content {
+    background: white;
+    border: 1px solid #e5e7eb;
+}
+
+.user-message .message-content {
+    background: #172033;
+    color: white;
+}
+
+
+/* =========================================
+   WELCOME
+========================================= */
+
+.welcome-card {
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 20px;
+    padding: 40px;
+    text-align: center;
+}
+
+.bot-icon {
+    font-size: 42px;
+}
+
+.welcome-card h2 {
+    margin-top: 15px;
+}
+
+.welcome-card p {
+    margin: 10px auto 25px;
+    max-width: 600px;
+    color: #667085;
+    line-height: 1.6;
+}
+
+.suggestions {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.suggestion {
+    border: 1px solid #d0d5dd;
+    background: white;
+    padding: 10px 15px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.suggestion:hover {
+    background: #f2f4f7;
+}
+
+
+/* =========================================
+   INPUT
+========================================= */
+
+.input-area {
+    background: white;
+    border-top: 1px solid #e5e7eb;
+    padding: 18px 7%;
+    position: sticky;
+    bottom: 0;
+}
+
+.input-wrapper {
+    width: min(900px, 92%);
+    margin: auto;
+    display: flex;
+    gap: 10px;
+}
+
+textarea {
+    flex: 1;
+    resize: none;
+    border: 1px solid #d0d5dd;
+    border-radius: 12px;
+    padding: 13px;
+    font-family: inherit;
+    outline: none;
+    min-height: 48px;
+}
+
+textarea:focus {
+    border-color: #667085;
+}
+
+#sendButton {
+    border: none;
+    background: #172033;
+    color: white;
+    padding: 0 20px;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+#sendButton:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.input-hint {
+    width: min(900px, 92%);
+    margin: 8px auto 0;
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    color: #98a2b3;
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 700px) {
+
+    .copilot-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .context-card {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .message-content {
+        max-width: 85%;
+    }
+
+    .input-wrapper {
+        width: 100%;
+    }
+
+    .input-hint {
+        width: 100%;
+    }
+
+}

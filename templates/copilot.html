@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>AI Copilot | Karmayogi AI</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/copilot.css') }}">
+
+</head>
+
+
+<body>
+
+<div class="copilot-page">
+
+
+    <!-- ========================================= -->
+    <!-- HEADER -->
+    <!-- ========================================= -->
+
+    <header class="copilot-header">
+
+        <div>
+
+            <span class="eyebrow">
+                KARMAYOGI AI
+            </span>
+
+            <h1>
+                AI Career Copilot
+            </h1>
+
+            <p>
+                Your personal AI mentor for learning and career growth.
+            </p>
+
+        </div>
+
+
+        <div class="header-actions">
+
+            <a
+                href="{{ url_for('dashboard.dashboard') }}"
+                class="dashboard-btn">
+
+                ← Dashboard
+
+            </a>
+
+
+            <a
+                href="{{ url_for('copilot.clear_copilot') }}"
+                class="clear-btn">
+
+                Clear Chat
+
+            </a>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- ========================================= -->
+    <!-- USER CONTEXT -->
+    <!-- ========================================= -->
+
+    <section class="context-card">
+
+        <div class="context-item">
+
+            <span>
+                Career Goal
+            </span>
+
+            <strong>
+                {{ learning_goal or "Personalized Learning" }}
+            </strong>
+
+        </div>
+
+
+        <div class="context-item">
+
+            <span>
+                Skill Gaps
+            </span>
+
+            <strong>
+
+                {% if skill_gaps %}
+
+                    {{ skill_gaps|length }} areas to improve
+
+                {% else %}
+
+                    No major gaps
+
+                {% endif %}
+
+            </strong>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ========================================= -->
+    <!-- CHAT AREA -->
+    <!-- ========================================= -->
+
+    <main class="chat-container">
+
+
+        <!-- ===================================== -->
+        <!-- WELCOME SCREEN -->
+        <!-- ===================================== -->
+
+        {% if not messages %}
+
+        <div class="welcome-card" id="welcomeCard">
+
+            <div class="bot-icon">
+                🤖
+            </div>
+
+            <h2>
+                Hi {{ profile.get("name", "there") }}!
+            </h2>
+
+            <p>
+                I'm your AI Career Copilot.
+                I know your learning profile and can
+                help you decide what to learn next.
+            </p>
+
+
+            <div class="suggestions">
+
+
+                <button
+                    type="button"
+                    class="suggestion">
+
+                    What should I learn next?
+
+                </button>
+
+
+                <button
+                    type="button"
+                    class="suggestion">
+
+                    Explain my skill gaps.
+
+                </button>
+
+
+                <button
+                    type="button"
+                    class="suggestion">
+
+                    Create a study plan for me.
+
+                </button>
+
+
+                <button
+                    type="button"
+                    class="suggestion">
+
+                    How can I prepare for my quiz?
+
+                </button>
+
+
+            </div>
+
+        </div>
+
+        {% endif %}
+
+
+
+        <!-- ===================================== -->
+        <!-- MESSAGES -->
+        <!-- ===================================== -->
+
+        <div
+            class="messages"
+            id="messages">
+
+            {% for message in messages %}
+
+            <div
+                class="message
+                {% if message.role == 'user' %}
+                    user-message
+                {% else %}
+                    assistant-message
+                {% endif %}">
+
+
+                {% if message.role == "assistant" %}
+
+                <div class="message-avatar">
+                    🤖
+                </div>
+
+                {% endif %}
+
+
+                <div class="message-content">
+
+                    {{ message.content }}
+
+                </div>
+
+
+                {% if message.role == "user" %}
+
+                <div class="message-avatar user-avatar">
+
+                    {{ profile.get("name", "U")[0]|upper }}
+
+                </div>
+
+                {% endif %}
+
+
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+
+    </main>
+
+
+
+    <!-- ========================================= -->
+    <!-- INPUT AREA -->
+    <!-- ========================================= -->
+
+    <div class="input-area">
+
+        <form
+            method="POST"
+            action="{{ url_for('copilot.copilot') }}"
+            id="copilotForm">
+
+
+            <div class="input-wrapper">
+
+                <textarea
+                    name="question"
+                    id="question"
+                    placeholder="Ask your AI Copilot anything..."
+                    rows="1"
+                    autocomplete="off"
+                    required></textarea>
+
+
+                <button
+                    type="submit"
+                    id="sendButton">
+
+                    Send ↑
+
+                </button>
+
+            </div>
+
+
+            <div class="input-hint">
+
+                <span>
+                    AI Career & Learning Assistant
+                </span>
+
+                <span>
+                    Press Enter to send
+                </span>
+
+            </div>
+
+
+        </form>
+
+    </div>
+
+
+</div>
+
+
+
+<!-- ========================================= -->
+<!-- JAVASCRIPT -->
+<!-- ========================================= -->
+
+<script
+    src="{{ url_for('static', filename='js/copilot.js') }}">
+</script>
+
+
+</body>
+
+</html>

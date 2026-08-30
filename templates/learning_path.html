@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Personalized Learning | Karmayogi AI</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/learning_path.css') }}">
+
+</head>
+
+<body>
+
+<div class="page">
+
+    <!-- ================= HEADER ================= -->
+
+    <header class="topbar">
+
+        <div class="brand">
+
+            <div class="brand-icon">
+                K
+            </div>
+
+            <div>
+
+                <span class="eyebrow">
+                    KARMAYOGI AI
+                </span>
+
+                <h1>
+                    Personalized Learning
+                </h1>
+
+            </div>
+
+        </div>
+
+
+        <a
+            href="{{ url_for('dashboard.dashboard') }}"
+            class="back-btn">
+
+            ← Dashboard
+
+        </a>
+
+    </header>
+
+
+    <!-- ================= HERO ================= -->
+
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <span class="eyebrow">
+                AI PERSONALIZED LEARNING PATH
+            </span>
+
+            <h2>
+                Close your competency gaps
+            </h2>
+
+            <p>
+                Based on your competency assessment, AI has identified
+                the skills you should improve. Complete the recommended
+                training and then take a reassessment.
+            </p>
+
+        </div>
+
+
+        <div class="hero-icon">
+            🎯
+        </div>
+
+    </section>
+
+
+    <!-- ================= SKILL GAPS ================= -->
+
+    {% if skill_gaps %}
+
+    <section class="section">
+
+        <div class="section-heading">
+
+            <span class="eyebrow">
+                AREAS TO IMPROVE
+            </span>
+
+            <h2>
+                Your Skill Gaps
+            </h2>
+
+            <p>
+                These competencies need improvement.
+            </p>
+
+        </div>
+
+
+        <div class="gap-list">
+
+            {% for gap in skill_gaps %}
+
+            <div class="gap-item">
+
+                <span class="gap-icon">
+                    ⚠
+                </span>
+
+                <span>
+                    {{ gap }}
+                </span>
+
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+    </section>
+
+    {% else %}
+
+    <section class="success-card">
+
+        <div class="success-icon">
+            ✓
+        </div>
+
+        <div>
+
+            <h2>
+                No competency gaps found
+            </h2>
+
+            <p>
+                You have fulfilled the required competencies.
+                You can proceed to the quiz.
+            </p>
+
+            <a
+                href="{{ url_for('quiz.quiz') }}"
+                class="primary-btn">
+
+                Generate AI Quiz →
+
+            </a>
+
+        </div>
+
+    </section>
+
+    {% endif %}
+
+
+    <!-- ================= AI ROADMAP ================= -->
+
+    {% if roadmap %}
+
+    <section class="section">
+
+        <div class="section-heading">
+
+            <span class="eyebrow">
+                AI GENERATED
+            </span>
+
+            <h2>
+                Your Learning Roadmap
+            </h2>
+
+            <p>
+                Follow these steps to improve your competencies.
+            </p>
+
+        </div>
+
+
+        <div class="roadmap">
+
+            {% for step in roadmap %}
+
+            <div class="roadmap-card">
+
+                <div class="roadmap-number">
+                    {{ loop.index }}
+                </div>
+
+
+                <div class="roadmap-content">
+
+                    <div class="roadmap-header">
+
+                        <h3>
+                            {{ step.competency }}
+                        </h3>
+
+                        <span class="level">
+
+                            {{ step.current_level }}/5
+
+                            <span class="arrow">
+                                →
+                            </span>
+
+                            {{ step.target_level }}/5
+
+                        </span>
+
+                    </div>
+
+
+                    <p class="why">
+
+                        {{ step.why_needed }}
+
+                    </p>
+
+
+                    <div class="roadmap-details">
+
+                        <div class="detail-box">
+
+                            <span class="detail-label">
+                                WHAT TO LEARN
+                            </span>
+
+                            <p>
+                                {{ step.what_to_learn }}
+                            </p>
+
+                        </div>
+
+
+                        <div class="detail-box">
+
+                            <span class="detail-label">
+                                RECOMMENDED ACTION
+                            </span>
+
+                            <p>
+                                {{ step.action }}
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+    </section>
+
+    {% endif %}
+
+
+    <!-- ================= TRAINING ================= -->
+
+    {% if recommendations %}
+
+    <section class="section" id="training">
+
+        <div class="section-heading">
+
+            <span class="eyebrow">
+                RECOMMENDED TRAINING
+            </span>
+
+            <h2>
+                Training for You
+            </h2>
+
+            <p>
+                These learning resources are selected according
+                to your identified competency gaps.
+            </p>
+
+        </div>
+
+
+        <div class="training-grid">
+
+            {% for training in recommendations %}
+
+            <article class="training-card">
+
+                <div class="training-top">
+
+                    <div class="training-icon">
+                        📚
+                    </div>
+
+                    <span class="skill-badge">
+                        {{ training.competency }}
+                    </span>
+
+                </div>
+
+
+                <h3>
+                    {{ training.title }}
+                </h3>
+
+
+                <p>
+                    {{ training.description }}
+                </p>
+
+
+                <div class="training-footer">
+
+                    <span class="training-type">
+                        Personalized
+                    </span>
+
+
+                    <a
+                        href="{{ training.url }}"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="training-btn">
+
+                        Start Training
+                        ↗
+
+                    </a>
+
+                </div>
+
+            </article>
+
+            {% endfor %}
+
+        </div>
+
+    </section>
+
+    {% elif skill_gaps %}
+
+    <section class="empty-training">
+
+        <div class="empty-icon">
+            📚
+        </div>
+
+        <h2>
+            Training resources are being prepared
+        </h2>
+
+        <p>
+            No matching course was found in the current
+            training catalog for your skill gaps.
+        </p>
+
+    </section>
+
+    {% endif %}
+
+
+    <!-- ================= PROGRESS ACTION ================= -->
+
+    <section class="next-step">
+
+        <div class="next-icon">
+            📈
+        </div>
+
+
+        <div class="next-content">
+
+            <span class="eyebrow">
+                NEXT STEP
+            </span>
+
+            <h2>
+                Completed your training?
+            </h2>
+
+            <p>
+                Take a reassessment so AI can update your competency
+                scores and generate your next learning path.
+            </p>
+
+        </div>
+
+
+        <a
+            href="{{ url_for('assessment.assessment') }}"
+            class="primary-btn">
+
+            Take Reassessment
+            →
+
+        </a>
+
+    </section>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <p>
+            Karmayogi AI • AI-enabled Competency-based Learning
+        </p>
+
+    </footer>
+
+</div>
+
+
+<!-- ================= JAVASCRIPT ================= -->
+
+<script
+    src="{{ url_for('static', filename='js/learning_path.js') }}">
+</script>
+
+</body>
+
+</html>

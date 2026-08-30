@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AI Quiz Generator</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/quiz.css') }}">
+</head>
+
+
+<body>
+
+<div class="page">
+
+    <!-- ================================= -->
+    <!-- HEADER -->
+    <!-- ================================= -->
+
+    <div class="header">
+
+        <div>
+
+            <div class="eyebrow">
+                AI LEARNING ASSESSMENT
+            </div>
+
+            <h1>
+                AI Quiz Generator
+            </h1>
+
+            <p>
+                Upload learning material and generate an
+                AI-powered quiz.
+            </p>
+
+        </div>
+
+
+        <a
+            href="{{ url_for('dashboard.dashboard') }}"
+            class="dashboard-link">
+
+            ← Dashboard
+
+        </a>
+
+    </div>
+
+
+    <!-- ================================= -->
+    <!-- ERROR MESSAGE -->
+    <!-- ================================= -->
+
+    {% if error %}
+
+    <div class="error-box">
+
+        ⚠️ {{ error }}
+
+    </div>
+
+    {% endif %}
+
+
+    <!-- ================================= -->
+    <!-- QUIZ GENERATOR -->
+    <!-- ================================= -->
+
+    <div class="upload-card">
+
+
+        <div class="upload-icon">
+            📄
+        </div>
+
+
+        <h2>
+            Generate Quiz from Learning Material
+        </h2>
+
+
+        <p class="description">
+
+            Upload a PDF containing learning material.
+            Our AI will analyse the content and generate
+            multiple-choice questions to test your knowledge.
+
+        </p>
+
+
+        <!-- ================================= -->
+        <!-- UPLOAD FORM -->
+        <!-- ================================= -->
+
+        <form
+            action="{{ url_for('quiz.quiz') }}"
+            method="POST"
+            enctype="multipart/form-data"
+            id="quizForm">
+
+
+            <!-- TOPIC -->
+
+            <div class="form-group">
+
+                <label for="topic">
+
+                    Topic
+                    <span>(Optional)</span>
+
+                </label>
+
+
+                <input
+                    type="text"
+                    id="topic"
+                    name="topic"
+                    placeholder="Example: Statistics, Python, Data Analysis"
+                >
+
+            </div>
+
+
+            <!-- PDF -->
+
+            <div class="form-group">
+
+                <label>
+
+                    Learning Material
+
+                </label>
+
+
+                <label
+                    for="pdfFile"
+                    class="file-label">
+
+
+                    <span id="fileText">
+
+                        📄 Choose PDF
+
+                    </span>
+
+
+                    <input
+                        type="file"
+                        id="pdfFile"
+                        name="learning_material"
+                        accept=".pdf"
+                        required
+                    >
+
+
+                </label>
+
+
+                <div
+                    id="fileName"
+                    class="file-name">
+
+                    No file selected
+
+                </div>
+
+            </div>
+
+
+            <!-- NUMBER OF QUESTIONS -->
+
+            <div class="quiz-options">
+
+                <label for="numQuestions">
+
+                    Number of Questions
+
+                </label>
+
+
+                <select
+                    name="num_questions"
+                    id="numQuestions">
+
+
+                    <option value="5">
+
+                        5 Questions
+
+                    </option>
+
+
+                    <option
+                        value="10"
+                        selected>
+
+                        10 Questions
+
+                    </option>
+
+
+                    <option value="15">
+
+                        15 Questions
+
+                    </option>
+
+
+                </select>
+
+            </div>
+
+
+            <!-- GENERATE BUTTON -->
+
+            <button
+                type="submit"
+                class="generate-btn"
+                id="generateBtn">
+
+                ✨ Generate AI Quiz
+
+            </button>
+
+
+        </form>
+
+    </div>
+
+
+    <!-- ================================= -->
+    <!-- GENERATED QUIZ -->
+    <!-- ================================= -->
+
+    {% if quiz and quiz.questions %}
+
+
+    <div class="quiz-card">
+
+
+        <!-- QUIZ HEADER -->
+
+        <div class="quiz-header">
+
+
+            <div>
+
+                <span class="eyebrow">
+
+                    AI GENERATED
+
+                </span>
+
+
+                <h2>
+
+                    Your Quiz
+
+                </h2>
+
+            </div>
+
+
+            <span class="question-count">
+
+                {{ quiz.questions|length }}
+                Questions
+
+            </span>
+
+
+        </div>
+
+
+
+        <!-- ================================= -->
+        <!-- QUIZ FORM -->
+        <!-- ================================= -->
+
+        <form
+            method="POST"
+            action="{{ url_for('quiz.submit_quiz') }}"
+            id="answerForm">
+
+
+            {% for question in quiz.questions %}
+
+
+            <div class="question">
+
+
+                <!-- QUESTION -->
+
+                <h3>
+
+                    Q{{ loop.index }}.
+
+                    {{ question.question }}
+
+                </h3>
+
+
+
+                <!-- OPTIONS -->
+
+                <div class="options">
+
+
+                    {% for option in question.options %}
+
+
+                    <label class="option">
+
+
+                        <input
+                            type="radio"
+                            name="question_{{ loop.index0 }}"
+                            value="{{ option }}"
+                            required
+                        >
+
+
+                        <span>
+
+                            {{ option }}
+
+                        </span>
+
+
+                    </label>
+
+
+                    {% endfor %}
+
+
+                </div>
+
+
+            </div>
+
+
+            {% endfor %}
+
+
+
+            <!-- SUBMIT -->
+
+            <button
+                type="submit"
+                class="submit-btn">
+
+                Submit Quiz
+
+            </button>
+
+
+        </form>
+
+
+    </div>
+
+
+    {% endif %}
+
+
+
+    <!-- ================================= -->
+    <!-- QUIZ RESULT -->
+    <!-- ================================= -->
+
+    {% if completed %}
+
+
+    <div class="result-card">
+
+
+        <div class="eyebrow">
+
+            QUIZ COMPLETED
+
+        </div>
+
+
+        <h2>
+
+            Your Result
+
+        </h2>
+
+
+        <div class="score">
+
+            {{ score }} / {{ total }}
+
+        </div>
+
+
+        <div class="percentage">
+
+            {{ percentage }}%
+
+        </div>
+
+
+        {% if percentage >= 80 %}
+
+        <p class="result-message">
+
+            🎉 Excellent performance!
+            You have demonstrated strong understanding
+            of the learning material.
+
+        </p>
+
+
+        {% elif percentage >= 60 %}
+
+        <p class="result-message">
+
+            👍 Good performance!
+            Keep practicing to strengthen your knowledge.
+
+        </p>
+
+
+        {% else %}
+
+        <p class="result-message">
+
+            📚 Keep learning!
+            Review the learning material and try again.
+
+        </p>
+
+
+        {% endif %}
+
+
+        <a
+            href="{{ url_for('quiz.quiz') }}"
+            class="retry-btn">
+
+            🔄 Generate New Quiz
+
+        </a>
+
+
+        <a
+            href="{{ url_for('dashboard.dashboard') }}"
+            class="dashboard-btn">
+
+            ← Back to Dashboard
+
+        </a>
+
+
+    </div>
+
+
+    {% endif %}
+
+
+
+    <!-- ================================= -->
+    <!-- AI COPILOT -->
+    <!-- ================================= -->
+
+    <div class="copilot-card">
+
+
+        <div>
+
+            <div class="eyebrow">
+
+                AI LEARNING ASSISTANT
+
+            </div>
+
+
+            <h2>
+
+                Need help instead?
+
+            </h2>
+
+
+            <p>
+
+                Don't want to take the quiz?
+                Ask your AI Copilot questions about
+                your learning material and competencies.
+
+            </p>
+
+        </div>
+
+
+        <a
+            href="{{ url_for('copilot.copilot') }}"
+            class="copilot-btn">
+
+            🤖 Open AI Copilot
+
+        </a>
+
+
+    </div>
+
+
+</div>
+
+
+
+<!-- ================================= -->
+<!-- JAVASCRIPT -->
+<!-- ================================= -->
+
+<script
+    src="{{ url_for('static', filename='js/quiz.js') }}">
+</script>
+
+
+</body>
+
+</html>
