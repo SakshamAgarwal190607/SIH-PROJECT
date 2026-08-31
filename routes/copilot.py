@@ -169,20 +169,13 @@ def copilot():
 
 
             answer = ask_copilot(
-
-                question=question,
-
-                profile=profile,
-
-                scores=scores,
-
-                skill_gaps=skill_gaps,
-
-                learning_goal=learning_goal,
-
-                conversation=
-                    previous_conversation
-            )
+    question=question,
+    profile=profile,
+    scores=scores,
+    skill_gaps=skill_gaps,
+    learning_goal=learning_goal,
+    conversation=messages
+)
 
 
             if answer is None:
