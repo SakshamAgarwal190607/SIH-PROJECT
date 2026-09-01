@@ -1,0 +1,65 @@
+{
+  "topic": "Python Tutorial 3.7.0",
+  "questions": [
+    {
+      "question": "Which section of the tutorial discusses the 'range()' function?",
+      "options": [
+        "4.1",
+        "4.2",
+        "4.3",
+        "4.4"
+      ],
+      "correct_answer": "4.3",
+      "explanation": "The range() function is covered in section 4.3.",
+      "difficulty": "Easy"
+    },
+    {
+      "question": "In which chapter is the concept of 'Modules' introduced?",
+      "options": [
+        "Chapter 5",
+        "Chapter 6",
+        "Chapter 7",
+        "Chapter 8"
+      ],
+      "correct_answer": "Chapter 6",
+      "explanation": "Modules are introduced in Chapter 6.",
+      "difficulty": "Easy"
+    },
+    {
+      "question": "Which section deals with 'User-defined Exceptions'?",
+      "options": [
+        "8.1",
+        "8.3",
+        "8.5",
+        "8.7"
+      ],
+      "correct_answer": "8.5",
+      "explanation": "User-defined exceptions are covered in section 8.5.",
+      "difficulty": "Medium"
+    },
+    {
+      "question": "The 'pass' statement is discussed in which subsection?",
+      "options": [
+        "4.4",
+        "4.5",
+        "4.6",
+        "4.7"
+      ],
+      "correct_answer": "4.5",
+      "explanation": "The pass statement is covered in subsection 4.5.",
+      "difficulty": "Easy"
+    },
+    {
+      "question": "Which section covers 'Inheritance' in classes?",
+      "options": [
+        "9.3",
+        "9.4",
+        "9.5",
+        "9.6"
+      ],
+      "correct_answer": "9.5",
+      "explanation": "Inheritance is discussed in section 9.5.",
+      "difficulty": "Medium"
+    }
+  ]
+}
